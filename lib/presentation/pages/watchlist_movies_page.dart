@@ -35,33 +35,56 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Watchlist'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Consumer<WatchlistMovieNotifier>(
-          builder: (context, data, child) {
-            if (data.watchlistState == RequestState.Loading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (data.watchlistState == RequestState.Loaded) {
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  final movie = data.watchlistMovies[index];
-                  return MovieCard(movie);
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Watchlist'),
+          bottom: TabBar(
+            tabs: [
+              Tab(
+                text: "Movie",
+              ),
+              Tab(
+                text: "Tv Show",
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Consumer<WatchlistMovieNotifier>(
+                builder: (context, data, child) {
+                  if (data.watchlistState == RequestState.Loading) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (data.watchlistState == RequestState.Loaded) {
+                    return ListView.builder(
+                      itemBuilder: (context, index) {
+                        final movie = data.watchlistMovies[index];
+                        return MovieCard(movie);
+                      },
+                      itemCount: data.watchlistMovies.length,
+                    );
+                  } else {
+                    return Center(
+                      key: Key('error_message'),
+                      child: Text(data.message),
+                    );
+                  }
                 },
-                itemCount: data.watchlistMovies.length,
-              );
-            } else {
-              return Center(
-                key: Key('error_message'),
-                child: Text(data.message),
-              );
-            }
-          },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text("Tv Show"),
+              ),
+            )
+          ],
         ),
       ),
     );
