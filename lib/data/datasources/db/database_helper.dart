@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:ditonton/data/models/movie_table.dart';
+import 'package:ditonton/data/models/tv_show_table.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
   static DatabaseHelper? _databaseHelper;
+
   DatabaseHelper._instance() {
     _databaseHelper = this;
   }
@@ -21,6 +23,7 @@ class DatabaseHelper {
   }
 
   static const String _tblWatchlist = 'watchlist';
+  static const String _tblWatchlistTvShow = 'watchlistTvShow';
 
   Future<Database> _initDb() async {
     final path = await getDatabasesPath();
@@ -35,6 +38,15 @@ class DatabaseHelper {
       CREATE TABLE  $_tblWatchlist (
         id INTEGER PRIMARY KEY,
         title TEXT,
+        overview TEXT,
+        posterPath TEXT
+      );
+    ''');
+
+    await db.execute('''
+      CREATE TABLE  $_tblWatchlistTvShow (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
         overview TEXT,
         posterPath TEXT
       );
@@ -75,5 +87,42 @@ class DatabaseHelper {
     final List<Map<String, dynamic>> results = await db!.query(_tblWatchlist);
 
     return results;
+  }
+
+  Future<int> insertWatchListTvShow(TvShowTable tvShowTable) async {
+    final db = await database;
+    return await db!.insert(_tblWatchlistTvShow, tvShowTable.toJson());
+  }
+
+  Future<int> removeWatchlistTvShow(TvShowTable tvShow) async {
+    final db = await database;
+    return await db!.delete(
+      _tblWatchlistTvShow,
+      where: 'id = ?',
+      whereArgs: [tvShow.id],
+    );
+  }
+
+  Future<List<Map<String, dynamic>>> getWatchlistTvShow() async {
+    final db = await database;
+    final List<Map<String, dynamic>> results =
+        await db!.query(_tblWatchlistTvShow);
+
+    return results;
+  }
+
+  Future<Map<String, dynamic>?> getTvShowById(int id) async {
+    final db = await database;
+    final results = await db!.query(
+      _tblWatchlistTvShow,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+
+    if (results.isNotEmpty) {
+      return results.first;
+    } else {
+      return null;
+    }
   }
 }

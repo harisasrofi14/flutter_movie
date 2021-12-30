@@ -7,7 +7,8 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+        body: SafeArea(
+      child: Stack(
         children: [
           Column(
             children: [
@@ -16,7 +17,7 @@ class AboutPage extends StatelessWidget {
                   color: kPrussianBlue,
                   child: Center(
                     child: Image.asset(
-                      'assets/circle-g.png',
+                      'assets/image/circle-g.png',
                       width: 128,
                     ),
                   ),
@@ -43,6 +44,6 @@ class AboutPage extends StatelessWidget {
           )
         ],
       ),
-    );
+    ));
   }
 }

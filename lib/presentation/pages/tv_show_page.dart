@@ -2,7 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv_show.dart';
+import 'package:ditonton/presentation/pages/popular_tv_show_page.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
+import 'package:ditonton/presentation/pages/top_rated_tv_shows_page.dart';
+import 'package:ditonton/presentation/pages/tv_show_detail_page.dart';
 import 'package:ditonton/presentation/provider/tv_show_list_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,24 +32,27 @@ class _TvShowPageState extends State<TvShowPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Tv Show"),
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, SearchPage.ROUTE_NAME);
-              },
-              icon: Icon(Icons.search),
-            )
-          ],
-        ),
-        body: Padding(
+      appBar: AppBar(
+        title: Text("Tv Show"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, SearchPage.ROUTE_NAME,
+                  arguments: "tvShow");
+            },
+            icon: Icon(Icons.search),
+          )
+        ],
+      ),
+      body: SafeArea(
+        child: Padding(
           padding: EdgeInsets.all(8.0),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Airing Today',
+                  'Now Playing',
                   style: kHeading6,
                 ),
                 Consumer<TvShowListNotifier>(builder: (context, data, child) {
@@ -61,9 +67,10 @@ class _TvShowPageState extends State<TvShowPage> {
                     return Text('Failed');
                   }
                 }),
-                Text(
-                  'Popular',
-                  style: kHeading6,
+                _buildSubHeading(
+                  title: 'Popular',
+                  onTap: () => Navigator.pushNamed(
+                      context, PopularTvShowPage.ROUTE_NAME),
                 ),
                 Consumer<TvShowListNotifier>(builder: (context, data, child) {
                   final state = data.popularTvShowState;
@@ -77,9 +84,10 @@ class _TvShowPageState extends State<TvShowPage> {
                     return Text('failed');
                   }
                 }),
-                Text(
-                  'Top Rated',
-                  style: kHeading6,
+                _buildSubHeading(
+                  title: 'Top Rated',
+                  onTap: () => Navigator.pushNamed(
+                      context, TopRatedTvShowsPage.ROUTE_NAME),
                 ),
                 Consumer<TvShowListNotifier>(builder: (context, data, child) {
                   final state = data.topRatedTvShowState;
@@ -92,11 +100,34 @@ class _TvShowPageState extends State<TvShowPage> {
                   } else {
                     return Text('failed');
                   }
-                }),
+                },),
               ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
+  }
+
+  Row _buildSubHeading({required String title, required Function() onTap}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: kHeading6,
+        ),
+        InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -117,11 +148,11 @@ class TvShowList extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: InkWell(
               onTap: () {
-                // Navigator.pushNamed(
-                //   context,
-                //   MovieDetailPage.ROUTE_NAME,
-                //   arguments: movie.id,
-                // );
+                Navigator.pushNamed(
+                  context,
+                  TvShowDetailPage.ROUTE_NAME,
+                  arguments: tvShow.id,
+                );
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(16)),

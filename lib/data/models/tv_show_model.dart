@@ -15,7 +15,7 @@ class TvShowModel extends Equatable {
       required this.voteCount});
 
   final String? backdropPath;
-  String? firstAirDate;
+  final String? firstAirDate;
   final List<int> genreIds;
   final int id;
   final String name;
