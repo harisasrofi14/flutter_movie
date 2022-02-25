@@ -96,7 +96,7 @@ void main() {
       expect(listenerCallCount, 1);
     });
 
-    test('should change movie when data is gotten successfully', () async {
+    test('should change movie_search when data is gotten successfully', () async {
       // arrange
       _arrangeUsecase();
       // act

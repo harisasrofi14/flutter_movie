@@ -15,7 +15,7 @@ void main() {
     usecase = SaveWatchlist(mockMovieRepository);
   });
 
-  test('should save movie to the repository', () async {
+  test('should save movie_search to the repository', () async {
     // arrange
     when(mockMovieRepository.saveWatchlist(testMovieDetail))
         .thenAnswer((_) async => Right('Added to Watchlist'));

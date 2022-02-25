@@ -15,7 +15,7 @@ void main() {
     usecase = RemoveWatchlist(mockMovieRepository);
   });
 
-  test('should remove watchlist movie from repository', () async {
+  test('should remove watchlist movie_search from repository', () async {
     // arrange
     when(mockMovieRepository.removeWatchlist(testMovieDetail))
         .thenAnswer((_) async => Right('Removed from watchlist'));
