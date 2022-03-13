@@ -1,6 +1,5 @@
 import 'package:ditonton/utils/ssl_pinning.dart';
 import 'package:get_it/get_it.dart';
-import 'package:http/http.dart' as http;
 import 'package:movie/data/datasources/db/movie_database_helper.dart';
 import 'package:movie/data/datasources/movie_local_data_source.dart';
 import 'package:movie/data/datasources/movie_remote_data_source.dart';
@@ -137,6 +136,5 @@ void init() {
       () => TvShowDatabaseHelper());
 
   // external
-  // locator.registerLazySingleton(() => http.Client());
   locator.registerLazySingleton(() => SSLPinning.client);
 }

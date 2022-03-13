@@ -211,7 +211,7 @@ class _TvShowDetailContentState extends State<TvShowDetailContent>
                               style: kHeading6,
                             ),
                             SizedBox(
-                              height: 150,
+                              height: widget.listRecommendations.isNotEmpty? 150 : 0,
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
@@ -256,7 +256,7 @@ class _TvShowDetailContentState extends State<TvShowDetailContent>
                             SizedBox(
                               height: currentOrientation == Orientation.portrait
                                   ? MediaQuery.of(context).size.height * 0.35
-                                  : MediaQuery.of(context).size.height * 0.7,
+                                  : MediaQuery.of(context).size.height * 0.8,
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [

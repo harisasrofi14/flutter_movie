@@ -21,14 +21,15 @@ class EpisodeCard extends StatelessWidget {
         );
       },
       child: SizedBox(
-        width: 180,
+        width: 200,
         child: Card(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Stack(
+            // mainAxisAlignment: MainAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
                 child: CachedNetworkImage(
+                  fit: BoxFit.fill,
                   imageUrl: '$BASE_IMAGE_URL${episode.stillPath}',
                   placeholder: (context, url) => const SizedBox(
                     height: 100,
@@ -36,11 +37,15 @@ class EpisodeCard extends StatelessWidget {
                   ),
                   errorWidget: (context, url, error) => Center(
                     child: Image.asset('assets/image/no-thumbnail.png',
-                        height: 100, width: 180, fit: BoxFit.cover),
+                        height: 100,  fit: BoxFit.fill),
                   ),
                 ),
-                borderRadius: const BorderRadius.all(Radius.circular(8)),
+
               ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children :[
               const SizedBox(
                 height: 10,
               ),
@@ -63,8 +68,10 @@ class EpisodeCard extends StatelessWidget {
                       ? episode.overview
                       : episode.airDate,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 4,
+                  maxLines: 2,
                 ),
+              ),
+                  ]
               ),
             ],
           ),
