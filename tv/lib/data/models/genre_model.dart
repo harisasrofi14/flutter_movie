@@ -16,10 +16,6 @@ class TvShowGenreModel extends Equatable {
         name: json["name"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-      };
 
   TvShowGenre toEntity() {
     return TvShowGenre(id: id, name: name);

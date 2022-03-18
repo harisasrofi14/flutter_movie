@@ -9,12 +9,6 @@ abstract class MovieWatchlistState extends Equatable {
 
 class MovieRemoveWatchlistEmpty extends MovieWatchlistState {}
 
-class MovieRemoveWatchlist extends MovieWatchlistState {
-  final MovieDetail movie;
-
-  const MovieRemoveWatchlist({required this.movie});
-}
-
 class MovieRemoveWatchlistError extends MovieWatchlistState {
   final String error;
 

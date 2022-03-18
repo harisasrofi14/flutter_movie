@@ -7,8 +7,4 @@ abstract class MoviePopularEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class OnGetPopularMovies extends MoviePopularEvent {
-  @override
-  List<Object?> get props => [];
-}
-
+class OnGetPopularMovies extends MoviePopularEvent {}

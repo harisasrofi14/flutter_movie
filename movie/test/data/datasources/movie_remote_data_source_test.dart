@@ -152,7 +152,7 @@ void main() {
     // });
   });
 
-  group('get movie_search recommendations', () {
+  group('get movie recommendations', () {
     final tMovieList = MovieResponse.fromJson(
             json.decode(readJson('dummy_data/movie_recommendations.json')))
         .movieList;

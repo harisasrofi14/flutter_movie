@@ -1,9 +1,6 @@
-
-
 import 'package:equatable/equatable.dart';
 
-class TvShow extends Equatable
-{
+class TvShow extends Equatable {
   TvShow(
       {required this.backdropPath,
       required this.firstAirDate,
@@ -33,7 +30,6 @@ class TvShow extends Equatable
   String? posterPath;
   double? voteAverage;
   int? voteCount;
-
 
   @override
   List<Object?> get props => [

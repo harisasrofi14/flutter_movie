@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 
 class MovieGenre extends Equatable {

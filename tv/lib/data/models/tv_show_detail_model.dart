@@ -46,20 +46,7 @@ class TvShowDetailResponse extends Equatable {
           voteCount: json["vote_count"],
           numberOfSeasons: json["number_of_seasons"]);
 
-  Map<String, dynamic> toJson() => {
-        "backdrop_path": backdropPath,
-        "first_air_date": firstAirDate,
-        "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
-        "id": id,
-        "name": name,
-        "overview": overview,
-        "popularity": popularity,
-        "poster_path": posterPath,
-        "status": status,
-        "vote_average": voteAverage,
-        "vote_count": voteCount,
-        "number_of_seasons": numberOfSeasons
-      };
+
 
   TvShowDetail toEntity() {
     return TvShowDetail(

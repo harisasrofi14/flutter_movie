@@ -2,8 +2,6 @@ part of 'movie_recommendation_bloc.dart';
 
 abstract class MovieRecommendationEvent extends Equatable {
   const MovieRecommendationEvent();
-
-  List<Object?> get props => [];
 }
 
 class OnGetRecommendationMovies extends MovieRecommendationEvent {
@@ -12,5 +10,5 @@ class OnGetRecommendationMovies extends MovieRecommendationEvent {
 
   final int movieId;
 
-  OnGetRecommendationMovies({required this.movieId});
+  const OnGetRecommendationMovies({required this.movieId});
 }

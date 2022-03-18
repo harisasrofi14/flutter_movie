@@ -29,7 +29,7 @@ class TvShowWatchlistBloc
       result.fold((failure) {
         emit(TvShowRemoveWatchlistError(error: failure.message));
       }, (r) {
-        emit(TvShowAddWatchlistSuccess(message: r));
+        emit(TvShowRemoveWatchlistSuccess(message: r));
         add(TvShowGetStatusWatchlist(tvShowId: tvShow.id));
       });
     });

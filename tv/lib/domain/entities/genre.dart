@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class TvShowGenre extends Equatable {
+class TvShowGenre {
   const TvShowGenre({
     required this.id,
     required this.name,
@@ -8,7 +6,4 @@ class TvShowGenre extends Equatable {
 
   final int id;
   final String name;
-
-  @override
-  List<Object> get props => [id, name];
 }

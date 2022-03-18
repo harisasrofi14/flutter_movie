@@ -51,7 +51,7 @@ class MovieWatchlistBloc
     });
 
     on<GetAllMovieWatchlist>((event, emit) async {
-      emit(MovieGetAllWatchlistLoading());
+      emit(const MovieGetAllWatchlistLoading());
       final result = await getWatchlistMovies.execute();
       result.fold((l) {
         MovieGetAllWatchlistError(error: l.message);

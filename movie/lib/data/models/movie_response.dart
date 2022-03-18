@@ -13,10 +13,6 @@ class MovieResponse extends Equatable {
             .where((element) => element.posterPath != null)),
       );
 
-  Map<String, dynamic> toJson() => {
-        "results": List<dynamic>.from(movieList.map((x) => x.toJson())),
-      };
-
   @override
   List<Object> get props => [movieList];
 }

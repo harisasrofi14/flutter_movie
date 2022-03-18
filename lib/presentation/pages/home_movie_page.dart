@@ -116,9 +116,8 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
                 _buildSubHeading(
                   title: 'Popular',
                   onTap: () =>
-                      FirebaseCrashlytics.instance.crash(),
-                      // Navigator.pushNamed(
-                      // context, PopularMoviesPage.ROUTE_NAME),
+                      Navigator.pushNamed(
+                      context, PopularMoviesPage.ROUTE_NAME),
                 ),
                 BlocBuilder<MoviePopularBloc, MoviePopularState>(
                     builder: (context, state) {

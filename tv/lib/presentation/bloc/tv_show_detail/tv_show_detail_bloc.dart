@@ -4,6 +4,7 @@ import 'package:tv/domain/entities/tv_show_detail.dart';
 import 'package:tv/domain/usecases/get_tv_show_detail.dart';
 
 part 'tv_show_detail_event.dart';
+
 part 'tv_show_detail_state.dart';
 
 class TvShowDetailBloc extends Bloc<TvShowDetailEvent, TvShowDetailState> {
