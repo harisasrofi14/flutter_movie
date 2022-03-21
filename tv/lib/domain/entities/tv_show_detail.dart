@@ -1,8 +1,8 @@
-
+import 'package:equatable/equatable.dart';
 import 'package:tv/domain/entities/genre.dart';
 
-class TvShowDetail  {
-  TvShowDetail({
+class TvShowDetail extends Equatable {
+  const TvShowDetail({
     required this.backdropPath,
     required this.firstAirDate,
     required this.genres,
@@ -30,5 +30,19 @@ class TvShowDetail  {
   final int voteCount;
   final int numberOfSeasons;
 
-
+  @override
+  List<Object?> get props => [
+        backdropPath,
+        firstAirDate,
+        genres,
+        id,
+        name,
+        overview,
+        popularity,
+        posterPath,
+        status,
+        voteAverage,
+        voteCount,
+        numberOfSeasons
+      ];
 }

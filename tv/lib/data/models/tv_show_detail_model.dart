@@ -46,8 +46,6 @@ class TvShowDetailResponse extends Equatable {
           voteCount: json["vote_count"],
           numberOfSeasons: json["number_of_seasons"]);
 
-
-
   TvShowDetail toEntity() {
     return TvShowDetail(
         backdropPath: backdropPath,

@@ -1,8 +1,6 @@
-import 'package:equatable/equatable.dart';
-
 import 'movie_model.dart';
 
-class MovieResponse extends Equatable {
+class MovieResponse {
   final List<MovieModel> movieList;
 
   const MovieResponse({required this.movieList});
@@ -12,7 +10,4 @@ class MovieResponse extends Equatable {
             .map((x) => MovieModel.fromJson(x))
             .where((element) => element.posterPath != null)),
       );
-
-  @override
-  List<Object> get props => [movieList];
 }

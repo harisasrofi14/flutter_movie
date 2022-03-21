@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:tv/domain/entities/tv_show_episode.dart';
 
-class TvShowSeason {
+class TvShowSeason extends Equatable {
   const TvShowSeason({
     required this.sId,
     required this.airDate,
@@ -20,4 +21,7 @@ class TvShowSeason {
   final int id;
   final String posterPath;
   final int seasonNumber;
+
+  @override
+  List<Object?> get props => [];
 }

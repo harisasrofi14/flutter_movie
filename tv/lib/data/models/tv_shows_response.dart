@@ -1,7 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:tv/data/models/tv_show_model.dart';
 
-class TvShowResponse extends Equatable {
+class TvShowResponse {
   final List<TvShowModel> tvShowList;
 
   const TvShowResponse({required this.tvShowList});
@@ -11,7 +10,4 @@ class TvShowResponse extends Equatable {
             .map((x) => TvShowModel.fromJson(x))
             .where((element) => element.posterPath != null)),
       );
-
-  @override
-  List<Object> get props => [tvShowList];
 }

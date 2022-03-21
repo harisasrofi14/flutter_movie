@@ -9,16 +9,23 @@ class EpisodeCard extends StatelessWidget {
   final TvShowEpisodes episode;
 
    const EpisodeCard(this.episode, {Key? key}) : super(key: key);
-
+  void _navigateToTvShowEpisodeDetailPage(BuildContext context) {
+    Navigator.pushNamed(
+      context,
+      TvShowEpisodeDetailPage.ROUTE_NAME,
+      arguments: episode,
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          TvShowEpisodeDetailPage.ROUTE_NAME,
-          arguments: episode,
-        );
+        _navigateToTvShowEpisodeDetailPage(context);
+        // Navigator.pushNamed(
+        //   context,
+        //   TvShowEpisodeDetailPage.ROUTE_NAME,
+        //   arguments: episode,
+        // );
       },
       child: SizedBox(
         width: 200,

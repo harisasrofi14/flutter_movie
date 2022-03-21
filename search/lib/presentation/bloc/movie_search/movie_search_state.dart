@@ -16,8 +16,6 @@ class MovieSearchError extends MovieSearchState {
 
   const MovieSearchError(this.message);
 
-  @override
-  List<Object> get props => [message];
 }
 
 class MovieSearchHasData extends MovieSearchState {
@@ -25,6 +23,4 @@ class MovieSearchHasData extends MovieSearchState {
 
   const MovieSearchHasData(this.result);
 
-  @override
-  List<Object> get props => [result];
 }

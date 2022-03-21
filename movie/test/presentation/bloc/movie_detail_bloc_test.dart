@@ -39,7 +39,7 @@ void main() {
   );
 
   blocTest<MovieDetailBloc, MovieDetailState>(
-    'Should emit [Loading, HashData] when get popular movies is successful',
+    'Should emit [Loading, HashData] when get detail movie is successful',
     build: () {
       when(mockGetMovieDetail.execute(id))
           .thenAnswer((_) async => Right(testMovieDetail));

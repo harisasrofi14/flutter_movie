@@ -23,7 +23,7 @@ void main() {
   });
 
   blocTest<TvShowSeasonBloc, TvShowSeasonState>(
-    'Should emit [Loading, Error] when get top rated tv show is unsuccessful',
+    'Should emit [Loading, Error] when get tv show seasons is unsuccessful',
     build: () {
       when(mockGetTvShowSeason.execute(tvShowId, tvShowSeason))
           .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
@@ -41,7 +41,7 @@ void main() {
   );
 
   blocTest<TvShowSeasonBloc, TvShowSeasonState>(
-    'Should emit [Loading, HashData] when get popular tv show is successful',
+    'Should emit [Loading, HashData] when get  tv show seasons is successful',
     build: () {
       when(mockGetTvShowSeason.execute(tvShowId, tvShowSeason))
           .thenAnswer((_) async => Right(testTvSeason));

@@ -39,7 +39,7 @@ void main() {
   );
 
   blocTest<MovieNowPlayingBloc, MovieNowPlayingState>(
-    'Should emit [Loading, HashData] when get popular movies is successful',
+    'Should emit [Loading, HashData] when get no playing movies is successful',
     build: () {
       when(mockGetNowPlayingMovies.execute())
           .thenAnswer((_) async => Right(testMovieList));

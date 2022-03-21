@@ -39,7 +39,7 @@ void main() {
   );
 
   blocTest<TvShowTopRatedBloc, TvShowTopRatedState>(
-    'Should emit [Loading, HashData] when get popular tv show is successful',
+    'Should emit [Loading, HashData] when get top rated tv show is successful',
     build: () {
       when(mockGetTopRatedTvShows.execute())
           .thenAnswer((_) async => Right(testTvShowList));

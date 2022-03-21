@@ -9,12 +9,6 @@ abstract class TvShowWatchlistState extends Equatable {
 
 class TvShowRemoveWatchlistEmpty extends TvShowWatchlistState {}
 
-class TvShowRemoveWatchlist extends TvShowWatchlistState {
-  final TvShowDetail tvShowDetail;
-
-  const TvShowRemoveWatchlist({required this.tvShowDetail});
-}
-
 class TvShowRemoveWatchlistError extends TvShowWatchlistState {
   final String error;
 

@@ -41,7 +41,7 @@ class TvShowRepositoryImpl implements TvShowRepository {
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect the network'));
+      return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -53,7 +53,7 @@ class TvShowRepositoryImpl implements TvShowRepository {
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect the network'));
+      return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -66,7 +66,7 @@ class TvShowRepositoryImpl implements TvShowRepository {
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect the network'));
+      return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
@@ -102,7 +102,7 @@ class TvShowRepositoryImpl implements TvShowRepository {
     } on ServerException {
       return Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect the network'));
+      return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
 
